@@ -1,0 +1,11 @@
+{
+  "qinglong": {
+    "baseURL": "",
+    "clientId": "",
+    "clientSecret": ""
+  },
+  "qq": {
+    "admin": "",
+    "group": ""
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "group": {
+    "listen": [],
+    "forward": []
+  },
+  "private": {
+    "forward": []
+  },
+  "keyword": {
+    "black": [],
+    "white": []
+  }
+}
