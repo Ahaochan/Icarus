@@ -1,7 +1,8 @@
 "use strict"
 // 登录
+const qq = ''
 const { createClient } = require("oicq")
-const botClient = createClient(1265415082)
+const botClient = createClient(qq);
 botClient.on("system.login.qrcode", function (e) {
 	//扫码后按回车登录
 	process.stdin.once("data", () => this.login())
