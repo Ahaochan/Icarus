@@ -11,8 +11,8 @@ const qinglongBaseURL = config.qinglong.baseURL; 			// 青龙url地址
 const qinglongClientId = config.qinglong.clientId;			// 青龙clientId
 const qinglongClientSecret = config.qinglong.clientSecret;	// 青龙clientSecret
 
-const qqAdmin = config.qq.admin;	// 管理员QQ号
-const qqGroup = config.qq.group; 	// 青龙消息处理群
+const qqAdmin = Number(config.qq.admin);	// 管理员QQ号
+const qqGroup = Number(config.qq.group); 	// 青龙消息处理群
 
 // 2. 青龙http客户端封装
 const qlHttp = axios.create({
