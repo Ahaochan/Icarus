@@ -96,6 +96,10 @@ if (qqGroup) {
 async function handleCookieCheck(qq) {
 	// 1. 获取cookie列表
 	let envs = await getCookieEnvs(qq);
+	const messages = [];
+	if(envs.length === 0) {
+		messages.push(`${qq}不存在可用ck`);
+	}
 
 	// 2. 校验cookie
 	const dayWarn = 25; // ck有效期一个月，这里提前预警
@@ -115,7 +119,6 @@ async function handleCookieCheck(qq) {
 	}
 
 	// 3. 发送消息
-	const messages = [];
 	if (invalidRemarks.length > 0) {
 		messages.push(`${qq}的已失效cookie列表（用户名）: \n${invalidRemarks.join('\n')}`);
 	}
