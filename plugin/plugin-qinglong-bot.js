@@ -154,10 +154,10 @@ async function handleCookieUpdate(qq, username, ptPin, ptKey) {
 
 	// 启用并修改ck
 	if (env.status === 1) {
-		qlHttp.put('/open/envs/enable', [env._id])
+		qlHttp.put('/open/envs/enable', [env.id])
 			.catch(error => msg.reply("启用ck失败" + error, true));
 	}
-	qlHttp.put('/open/envs', { 'name': env.name, 'remarks': env.remarks, 'value': ptPin + ptKey, '_id': env._id })
+	qlHttp.put('/open/envs', { 'name': env.name, 'remarks': env.remarks, 'value': ptPin + ptKey, 'id': env.id })
 		.catch(error => msg.reply("更新ck失败" + error, true));
 
 	return [`更新ck成功，请输入【青龙ck】检查ck状态`];
