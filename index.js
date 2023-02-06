@@ -12,6 +12,7 @@ exports.bot = botClient;
 
 // template plugins
 require("./plugin/plugin-qinglong-bot") // 青龙bot
+require("./plugin/plugin-qinglong-notify") // 青龙通知
 require("./plugin/plugin-xianbao") // 线报
 // require("./cron") // 线报
 // require("./plugins/plugin-hello") //hello world
