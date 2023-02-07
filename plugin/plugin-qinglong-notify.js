@@ -34,8 +34,11 @@ function notify(data) {
         qiwei(message);
     }
 
-    const group = bot.pickGroup(608024845, true);
-    group.sendMsg(message);
+    const black = [];
+    if(!message.includesAny(black)) {
+        const group = bot.pickGroup(608024845, true);
+        group.sendMsg(message);
+    }
 }
 
 function qiwei(message) {
@@ -46,4 +49,8 @@ function qiwei(message) {
         }
     }
     axios.post(qyapi, body);
+}
+
+String.prototype.includesAny = function(array) {
+    return array.filter(k => this.indexOf(k) > -1).length > 0;
 }
