@@ -113,7 +113,7 @@ async function handleCookieCheck(qq) {
 			invalidRemarks.push(remarks);
 		}
 		// 账号临期校验
-		else if (env.status === 0 && new Date() - Date.parse(env.timestamp) > dayWarn * 24 * 60 * 60 * 1000) {
+		else if (env.status === 0 && Date.now() - Date.parse(env.updatedAt) > dayWarn * 24 * 60 * 60 * 1000) {
 			warnRemarks.push(remarks);
 		}
 	}
