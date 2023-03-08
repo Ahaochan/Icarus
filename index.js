@@ -1,12 +1,40 @@
 "use strict"
 // 登录
-const qq = ''
-const { createClient } = require("oicq")
-const botClient = createClient(qq);
-botClient.on("system.login.qrcode", function (e) {
-	//扫码后按回车登录
-	process.stdin.once("data", () => this.login())
-}).login()
+const qq = 0;
+const pw = '';
+const { createClient } = require("icqq")
+const botClient=createClient()
+botClient.on('system.login.slider', (e) => {
+	console.log('输入滑块地址获取的ticket后继续。\n滑块地址:    ' + e.url)
+	process.stdin.once('data', (data) => {
+		console.log("输入了:" + data.toString().trim());
+		botClient.submitSlider(data.toString().trim())
+	})
+});
+botClient.on('system.login.qrcode', (e) => {
+	console.log('扫码完成后回车继续:    ')
+	process.stdin.once('data', () => {
+		botClient.login()
+	})
+})
+botClient.on('system.login.device', (e) => {
+	console.log('请选择验证方式:(1：短信验证   其他：扫码验证)')
+	process.stdin.once('data', (data) => {
+		if (data.toString().trim() === '1') {
+			botClient.sendSmsCode()
+			console.log('请输入手机收到的短信验证码:')
+			process.stdin.once('data', (res) => {
+				botClient.submitSmsCode(res.toString().trim())
+			})
+		} else {
+			console.log('扫码完成后回车继续：' + e.url)
+			process.stdin.once('data', () => {
+				botClient.login()
+			})
+		}
+	})
+})
+botClient.login(qq,pw);
 
 exports.bot = botClient;
 
